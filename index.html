@@ -5,369 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sindicato de Transporte del Oriente</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: #e2e8f0;
-            color: #1a2a3a;
-            line-height: 1.4;
-            padding: 10px 5px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            overflow: hidden;
-            padding-bottom: 20px;
-            border: 1px solid #cbd5e1;
-        }
-
-        /* --- CABECERA ULTRA COMPACTA --- */
-        .header {
-            background: linear-gradient(135deg, #0f172a, #1e3c72);
-            color: #ffffff;
-            text-align: center;
-            padding: 12px 15px;
-            border-bottom: 3px solid #38bdf8;
-        }
-
-        .header h1 {
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            margin-bottom: 2px;
-        }
-
-        .header p {
-            font-size: 11px;
-            color: #cbd5e1;
-        }
-
-        /* --- CARRUSEL COMPACTO --- */
-        .carrusel-contenedor {
-            position: relative;
-            width: 100%;
-            background: #0f172a;
-            min-height: 150px;
-            overflow: hidden;
-        }
-
-        .carrusel-slides {
-            display: flex;
-            transition: transform 0.4s ease-in-out;
-            width: 100%;
-        }
-
-        .slide {
-            min-width: 100%;
-            position: relative;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .slide-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
-            color: #ffffff;
-            padding: 10px 12px 6px 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .carrusel-puntos {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            position: absolute;
-            bottom: 6px;
-            right: 12px;
-            z-index: 5;
-        }
-
-        .punto {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.4);
-            cursor: pointer;
-        }
-
-        .punto.activo {
-            background: #ffffff;
-            width: 14px;
-            border-radius: 3px;
-        }
-
-        .loading-carrusel {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 150px;
-            color: #94a3b8;
-            font-size: 12px;
-        }
-
-        /* --- SECCI車N PRINCIPAL --- */
-        .seccion-principal {
-            padding: 12px 12px 5px 12px;
-        }
-
-        .btn-principal {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 14px;
-            text-align: center;
-            box-shadow: 0 3px 8px rgba(37, 211, 102, 0.3);
-            margin-bottom: 8px;
-        }
-
-        .btn-compartir-general {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            width: 100%;
-            background: #334155;
-            color: white;
-            text-decoration: none;
-            padding: 9px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 13px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .grupo-oficinas {
-            padding: 0 12px;
-            margin-top: 12px;
-        }
-
-        .titulo-grupo {
-            font-size: 12px;
-            text-transform: uppercase;
-            color: #64748b;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            font-weight: 700;
-            border-left: 3px solid #1e3c72;
-            padding-left: 6px;
-        }
-
-        .card-oficina {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-
-        .card-nombre {
-            font-size: 14px;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 6px;
-        }
-
-        /* 3 BOTONES EN UNA SOLA L赤NEA */
-        .acciones-oficina {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 5px;
-        }
-
-        .btn-accion {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            text-decoration: none;
-            padding: 8px 4px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 600;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .btn-maps {
-            background-color: #e2e8f0;
-            color: #334155;
-            border: 1px solid #cbd5e1;
-        }
-
-        .btn-llamar {
-            background-color: #25D366;
-            color: #ffffff;
-        }
-
-        .btn-compartir {
-            background-color: #f1f5f9;
-            color: #475569;
-            border: 1px solid #cbd5e1;
-            font-size: 10.5px;
-        }
-
-        .icon-wa {
-            width: 13px;
-            height: 13px;
-            fill: currentColor;
-            flex-shrink: 0;
-        }
-
-        /* MAPA GENERAL M芍S ALTO Y RESPONSIVO */
-        .card-mapa-general {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-
-        .mapa-header {
-            padding: 8px 12px;
-            background: #e2e8f0;
-            font-weight: bold;
-            color: #1e293b;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-
-        .mapa-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 85%; /* Mapa m芍s alto (proporci車n expandida) */
-            height: 0;
-            overflow: hidden;
-        }
-
-        .mapa-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* MODAL EMERGENTE M芍S ALTO */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            background-color: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-        }
-
-        .modal-content {
-            background-color: #ffffff;
-            width: 100%;
-            max-width: 440px;
-            height: 88vh; /* Modal m芍s alto para mejor visualizaci車n del mapa */
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-
-        .modal-header {
-            background: #1e3c72;
-            color: white;
-            padding: 12px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #38bdf8;
-        }
-
-        .modal-header h3 {
-            font-size: 14px;
-            font-weight: 600;
-            max-width: 60%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .btn-ruta-externa {
-            background-color: #0284c7;
-            color: white;
-            text-decoration: none;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: bold;
-        }
-
-        .btn-cerrar {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 22px;
-            cursor: pointer;
-            line-height: 1;
-            margin-left: 8px;
-        }
-
-        .modal-body {
-            flex-grow: 1;
-            width: 100%;
-            height: 100%;
-        }
-
-        .modal-body iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .footer-text {
-            text-align: center;
-            font-size: 11px;
-            color: #64748b;
-            margin-top: 15px;
-            padding: 0 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -377,7 +15,7 @@
         <p>Servicio Interprovincial</p>
     </div>
 
-    <!-- CARRUSEL DIN芍MICO (GOOGLE SHEETS) -->
+    <!-- CARRUSEL DIN��MICO (GOOGLE SHEETS) -->
     <div class="carrusel-contenedor" id="carruselContenedor">
         <div class="loading-carrusel" id="loadingCarrusel">Cargando anuncios...</div>
         <div class="carrusel-slides" id="carruselSlides"></div>
@@ -403,7 +41,7 @@
         <div class="card-oficina">
             <div class="card-nombre">Oficina Okinawa</div>
             <div class="acciones-oficina">
-                <button onclick="abrirUbicacion('Oficina Okinawa', '-17.219766, -62.894665')" class="btn-accion btn-maps">&#128205; Mapa</button>
+                <button onclick="abrirUbicacion('Oficina Okinawa', '-17.219766', '-62.894665')" class="btn-accion btn-maps">&#128205; Mapa</button>
                 <a href="https://wa.me/59160096184?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Okinawa.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
                     <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     Chat
@@ -416,7 +54,7 @@
         <div class="card-oficina">
             <div class="card-nombre">Oficina Warnes</div>
             <div class="acciones-oficina">
-                <button onclick="abrirUbicacion('Oficina Warnes', '-17.51089, -63.16776')" class="btn-accion btn-maps">&#128205; Mapa</button>
+                <button onclick="abrirUbicacion('Oficina Warnes', '-17.51089', '-63.16776')" class="btn-accion btn-maps">&#128205; Mapa</button>
                 <a href="https://wa.me/59160095645?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Warnes.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
                     <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     Chat
@@ -434,7 +72,7 @@
         <div class="card-oficina">
             <div class="card-nombre">Oficina Terminal Bimodal</div>
             <div class="acciones-oficina">
-                <button onclick="abrirUbicacion('Oficina Terminal Bimodal', '-17.789192, -63.161470')" class="btn-accion btn-maps">&#128205; Mapa</button>
+                <button onclick="abrirUbicacion('Oficina Terminal Bimodal', '-17.789192', '-63.161470')" class="btn-accion btn-maps">&#128205; Mapa</button>
                 <a href="https://wa.me/59160095643?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Terminal%20Bimodal.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
                     <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     Chat
@@ -447,7 +85,7 @@
         <div class="card-oficina">
             <div class="card-nombre">Parada La Ramada</div>
             <div class="acciones-oficina">
-                <button onclick="abrirUbicacion('Parada La Ramada', '-17.79243, -63.18767')" class="btn-accion btn-maps">&#128205; Mapa</button>
+                <button onclick="abrirUbicacion('Parada La Ramada', '-17.79243', '-63.18767')" class="btn-accion btn-maps">&#128205; Mapa</button>
                 <a href="https://wa.me/59160095648?text=Hola,%20me%20comunico%20con%20la%20Parada%20La%20Ramada.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
                     <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     Chat
@@ -460,7 +98,7 @@
         <div class="card-oficina">
             <div class="card-nombre">Parada 2do Anillo</div>
             <div class="acciones-oficina">
-                <button onclick="abrirUbicacion('Parada 2do Anillo', '-17.76845, -63.18218')" class="btn-accion btn-maps">&#128205; Mapa</button>
+                <button onclick="abrirUbicacion('Parada 2do Anillo', '-17.76845', '-63.18218')" class="btn-accion btn-maps">&#128205; Mapa</button>
                 <a href="https://wa.me/59160095647?text=Hola,%20me%20comunico%20con%20la%20Parada%202do%20Anillo.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
                     <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     Chat
@@ -469,10 +107,10 @@
             </div>
         </div>
 
-        <!-- MAPA GENERAL INTERACTIVO (M芍S ALTO) -->
+        <!-- MAPA GENERAL INTERACTIVO -->
         <div class="card-mapa-general">
             <div class="mapa-header">&#128506; Mapa General de Paradas</div>
-            <div class="mapa-wrapper" style="padding-bottom: 95%;"> <!-- Mapa general m芍s alto -->
+            <div class="mapa-wrapper" style="padding-bottom: 95%;">
                 <iframe src="https://www.google.com/maps/d/embed?mid=1mVOMb9Xunj1J_tCtY6-tJzAhJ4pKGgA&hl=es&ehbc=2E312F" loading="lazy"></iframe>
             </div>
         </div>
@@ -495,163 +133,6 @@
     </div>
 </div>
 
-<script>
-    /* CONEXI車N A GOOGLE SHEETS */
-    const SPREADSHEET_ID = '15Wmk0ufjZv8mQWY80jt6AXSmMX-H2TqxGYVfGuBPmeU'; 
-    const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json`;
-
-    let indexActual = 0;
-    let totalSlides = 0;
-    let intervaloCarrusel = null;
-
-    async function cargarSlidesDesdeSheets() {
-        const loading = document.getElementById('loadingCarrusel');
-        const containerSlides = document.getElementById('carruselSlides');
-        const containerPuntos = document.getElementById('carruselPuntos');
-
-        if (!SPREADSHEET_ID || SPREADSHEET_ID.trim() === '' || SPREADSHEET_ID === 'TU_ID_DE_GOOGLE_SHEETS_AQUI') {
-            usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
-            return;
-        }
-
-        try {
-            const response = await fetch(SHEETS_URL);
-            const text = await response.text();
-            const jsonText = text.substring(47, text.length - 2);
-            const data = JSON.parse(jsonText);
-            const rows = data.table.rows;
-
-            if (!rows || rows.length === 0) {
-                usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
-                return;
-            }
-
-            let slidesHTML = '';
-            let puntosHTML = '';
-            let contadorValid = 0;
-
-            rows.forEach((row) => {
-                const imgUrl = row.c && row.c[0] && row.c[0].v ? row.c[0].v : '';
-                const caption = row.c && row.c[1] && row.c[1].v ? row.c[1].v : '';
-
-                if (imgUrl) {
-                    slidesHTML += `
-                        <div class="slide">
-                            <img src="${imgUrl}" alt="Aviso Sindicato">
-                            ${caption ? `<div class="slide-caption">${caption}</div>` : ''}
-                        </div>`;
-                    puntosHTML += `<span class="punto ${contadorValid === 0 ? 'activo' : ''}" onclick="irASlide(${contadorValid})"></span>`;
-                    contadorValid++;
-                }
-            });
-
-            if (contadorValid > 0) {
-                loading.style.display = 'none';
-                containerSlides.innerHTML = slidesHTML;
-                containerPuntos.innerHTML = puntosHTML;
-                totalSlides = contadorValid;
-                intervaloCarrusel = setInterval(moverCarrusel, 4000);
-            } else {
-                usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
-            }
-
-        } catch (error) {
-            console.error('Error cargando Google Sheets, usando respaldo:', error);
-            usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
-        }
-    }
-
-    function usarRespaldoPorDefecto(loading, containerSlides, containerPuntos) {
-        if(loading) loading.style.display = 'none';
-        containerSlides.innerHTML = `
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="Flota de buses">
-                <div class="slide-caption">&#128227; Salidas continuas todos los d&iacute;as del a&ntilde;o</div>
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80" alt="Terminal de buses">
-                <div class="slide-caption">&#127970; Atenci&oacute;n personalizada en todas nuestras paradas</div>
-            </div>`;
-        containerPuntos.innerHTML = `
-            <span class="punto activo" onclick="irASlide(0)"></span>
-            <span class="punto" onclick="irASlide(1)"></span>`;
-        totalSlides = 2;
-        if (!intervaloCarrusel) {
-            intervaloCarrusel = setInterval(moverCarrusel, 4000);
-        }
-    }
-
-    function moverCarrusel() {
-        if (totalSlides <= 1) return;
-        indexActual = (indexActual + 1) % totalSlides;
-        actualizarCarrusel();
-    }
-
-    function irASlide(index) {
-        indexActual = index;
-        actualizarCarrusel();
-        reiniciarIntervalo();
-    }
-
-    function actualizarCarrusel() {
-        const slides = document.getElementById('carruselSlides');
-        const puntos = document.querySelectorAll('.punto');
-        if(!slides) return;
-        slides.style.transform = `translateX(-${indexActual * 100}%)`;
-        puntos.forEach((punto, i) => {
-            punto.classList.toggle('activo', i === indexActual);
-        });
-    }
-
-    function reiniciarIntervalo() {
-        if (totalSlides <= 1) return;
-        clearInterval(intervaloCarrusel);
-        intervaloCarrusel = setInterval(moverCarrusel, 4000);
-    }
-
-    window.addEventListener('DOMContentLoaded', cargarSlidesDesdeSheets);
-
-    /* --- L車GICA DEL MODAL DEL MAPA --- */
-    function abrirUbicacion(nombreOficina, coordenadas) {
-        const modal = document.getElementById('mapModal');
-        const titulo = document.getElementById('modalTitulo');
-        const iframe = document.getElementById('mapIframe');
-        const btnRuta = document.getElementById('btnRuta');
-        
-        titulo.innerText = nombreOficina;
-        iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(coordenadas)}&t=&z=16&ie=UTF-8&iwloc=&output=embed`;
-        btnRuta.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(coordenadas)}`;
-        
-        modal.style.display = 'flex';
-    }
-
-    function cerrarModal() {
-        const modal = document.getElementById('mapModal');
-        const iframe = document.getElementById('mapIframe');
-        if(modal) modal.style.display = 'none';
-        if(iframe) iframe.src = ''; 
-    }
-
-    window.onclick = function(event) {
-        const modal = document.getElementById('mapModal');
-        if (event.target == modal) {
-            cerrarModal();
-        }
-    }
-
-    /* --- COMPARTIR --- */
-    function compartirWeb() {
-        const urlActual = window.location.href;
-        const texto = `\uD83D\uDE8C *Sindicato de Transporte del Oriente*\n Aqu\u00ed tienes nuestra Tarjeta Digital con todas nuestras ubicaciones de Google Maps y n\u00ameros de WhatsApp oficiales:\n\n\uD83D\uDD17 ${urlActual}`;
-        window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
-    }
-
-    function compartirOficina(nombre, telf, coords) {
-        const linkMaps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coords)}`;
-        const texto = `\uD83D\uDCCD *Sindicato de Transporte del Oriente*\n\n*${nombre}*\n\uD83D\uDCDE WhatsApp de contacto: ${telf}\n\uD83D\uDDFA\uFE0F Ubicaci\u00f3n en Google Maps:\n${linkMaps}`;
-        window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
-    }
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
