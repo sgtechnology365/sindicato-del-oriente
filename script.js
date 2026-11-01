@@ -168,20 +168,12 @@ window.onclick = function(event) {
 /* --- COMPARTIR --- */
 function compartirWeb() {
     const urlActual = window.location.href;
-    const texto = "*Sindicato de Transporte del Oriente*
- Aqui tienes nuestra Tarjeta Digital con todas nuestras ubicaciones de Google Maps y numeros de WhatsApp oficiales:
-
-" + urlActual;
+    const texto = "*Sindicato de Transporte del Oriente*\nAqui tienes nuestra Tarjeta Digital con todas nuestras ubicaciones de Google Maps y numeros de WhatsApp oficiales:\n\n" + urlActual;
     window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
 }
 
 function compartirOficina(nombre, telf, coords) {
     const linkMaps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coords)}`;
-    const texto = `*Sindicato de Transporte del Oriente*
-
-*${nombre}*
- WhatsApp de contacto: ${telf}
- Ubicacion en Google Maps:
-${linkMaps}`;
+    const texto = `*Sindicato de Transporte del Oriente*\n\n*${nombre}*\n WhatsApp de contacto: ${telf}\n Ubicacion en Google Maps:\n${linkMaps}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
 }
