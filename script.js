@@ -6,9 +6,6 @@ let indexActual = 0;
 let totalSlides = 0;
 let intervaloCarrusel = null;
 
-/**
- * Carga los anuncios dinamicos desde Google Sheets usando extraccion por Regex.
- */
 async function cargarSlidesDesdeSheets() {
     const loading = document.getElementById('loadingCarrusel');
     const containerSlides = document.getElementById('carruselSlides');
@@ -23,7 +20,6 @@ async function cargarSlidesDesdeSheets() {
         const response = await fetch(SHEETS_URL);
         const text = await response.text();
 
-        // Extraccion robusta basada en Regex para encontrar la estructura JSON valida
         const jsonMatch = text.match(/\{.*\}/s);
         if (!jsonMatch) {
             throw new Error('Formato JSON no valido en la respuesta de Google Sheets');
@@ -45,7 +41,6 @@ async function cargarSlidesDesdeSheets() {
             let imgUrl = row.c && row.c[0] && row.c[0].v ? String(row.c[0].v).trim() : '';
             const caption = row.c && row.c[1] && row.c[1].v ? String(row.c[1].v).trim() : '';
 
-            // Limpieza basica de la URL si viene envuelta o con espacios
             if (imgUrl.startsWith('http://') || imgUrl.startsWith('https://')) {
                 slidesHTML += `
                     <div class="slide">
@@ -73,9 +68,6 @@ async function cargarSlidesDesdeSheets() {
     }
 }
 
-/**
- * Respaldo en caso de fallo de red o datos vacios.
- */
 function usarRespaldoPorDefecto(loading, containerSlides, containerPuntos) {
     if (loading) loading.style.display = 'none';
     if (containerSlides) {
@@ -139,7 +131,6 @@ function abrirUbicacion(nombreOficina, lat, lng) {
 
     if (!modal || !titulo || !iframe || !btnRuta) return;
 
-    // Si pasan coordenadas combinadas en lat
     let latClean = lat;
     let lngClean = lng;
     if (!lng && typeof lat === 'string' && lat.includes(',')) {
@@ -177,12 +168,20 @@ window.onclick = function(event) {
 /* --- COMPARTIR --- */
 function compartirWeb() {
     const urlActual = window.location.href;
-    const texto = "*Sindicato de Transporte del Oriente*\n Aqui tienes nuestra Tarjeta Digital con todas nuestras ubicaciones de Google Maps y numeros de WhatsApp oficiales:\n\n" + urlActual;
+    const texto = "*Sindicato de Transporte del Oriente*
+ Aqui tienes nuestra Tarjeta Digital con todas nuestras ubicaciones de Google Maps y numeros de WhatsApp oficiales:
+
+" + urlActual;
     window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
 }
 
 function compartirOficina(nombre, telf, coords) {
     const linkMaps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coords)}`;
-    const texto = `*Sindicato de Transporte del Oriente*\n\n*${nombre}*\n WhatsApp de contacto: ${telf}\n Ubicacion en Google Maps:\n${linkMaps}`;
+    const texto = `*Sindicato de Transporte del Oriente*
+
+*${nombre}*
+ WhatsApp de contacto: ${telf}
+ Ubicacion en Google Maps:
+${linkMaps}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
 }
