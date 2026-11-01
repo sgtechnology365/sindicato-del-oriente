@@ -493,7 +493,7 @@
 </div>
 
 <script>
-    /* CONEXIÓN A GOOGLE SHEETS */
+    /* CONEXIÓN A GOOGLE SHEETS (AISLADA Y SEGURA) */
     const SPREADSHEET_ID = '15Wmk0ufjZv8mQWY80jt6AXSmMX-H2TqxGYVfGuBPmeU'; 
     const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json`;
 
@@ -506,16 +506,18 @@
         const containerSlides = document.getElementById('carruselSlides');
         const containerPuntos = document.getElementById('carruselPuntos');
 
-        if (!SPREADSHEET_ID || SPREADSHEET_ID.trim() === '' || SPREADSHEET_ID === 'TU_ID_DE_GOOGLE_SHEETS_AQUI') {
-            usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
-            return;
-        }
-
         try {
             const response = await fetch(SHEETS_URL);
             const text = await response.text();
-            const jsonText = text.substring(47, text.length - 2);
-            const data = JSON.parse(jsonText);
+            
+            // Extracción segura del JSON de Google Visualization
+            const jsonStart = text.indexOf('{');
+            const jsonEnd = text.lastIndexOf('}');
+            if (jsonStart === -1 || jsonEnd === -1) {
+                throw new Error("Formato de respuesta inválido");
+            }
+            
+            const data = JSON.parse(text.substring(jsonStart, jsonEnd + 1));
             const rows = data.table.rows;
 
             if (!rows || rows.length === 0) {
@@ -528,10 +530,11 @@
             let contadorValid = 0;
 
             rows.forEach((row) => {
-                const imgUrl = row.c && row.c[0] && row.c[0].v ? row.c[0].v : '';
-                const caption = row.c && row.c[1] && row.c[1].v ? row.c[1].v : '';
+                // Omitir la fila de cabecera si dice "imagen"
+                const imgUrl = row.c && row.c[0] && row.c[0].v ? String(row.c[0].v).trim() : '';
+                const caption = row.c && row.c[1] && row.c[1].v ? String(row.c[1].v).trim() : '';
 
-                if (imgUrl) {
+                if (imgUrl && imgUrl.toLowerCase() !== 'imagen') {
                     slidesHTML += `
                         <div class="slide">
                             <img src="${imgUrl}" alt="Aviso Sindicato">
@@ -543,7 +546,7 @@
             });
 
             if (contadorValid > 0) {
-                loading.style.display = 'none';
+                if(loading) loading.style.display = 'none';
                 containerSlides.innerHTML = slidesHTML;
                 containerPuntos.innerHTML = puntosHTML;
                 totalSlides = contadorValid;
@@ -608,18 +611,18 @@
 
     window.addEventListener('DOMContentLoaded', cargarSlidesDesdeSheets);
 
-    /* --- LÓGICA DEL MODAL DEL MAPA --- */
+    /* --- LÓGICA DEL MODAL DEL MAPA (INDEPENDIENTE Y SEGURA) --- */
     function abrirUbicacion(nombreOficina, coordenadas) {
         const modal = document.getElementById('mapModal');
         const titulo = document.getElementById('modalTitulo');
         const iframe = document.getElementById('mapIframe');
         const btnRuta = document.getElementById('btnRuta');
         
-        titulo.innerText = nombreOficina;
-        iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(coordenadas)}&t=&z=16&ie=UTF-8&iwloc=&output=embed`;
-        btnRuta.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(coordenadas)}`;
+        if(titulo) titulo.innerText = nombreOficina;
+        if(iframe) iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(coordenadas)}&t=&z=16&ie=UTF-8&iwloc=&output=embed`;
+        if(btnRuta) btnRuta.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(coordenadas)}`;
         
-        modal.style.display = 'flex';
+        if(modal) modal.style.display = 'flex';
     }
 
     function cerrarModal() {
