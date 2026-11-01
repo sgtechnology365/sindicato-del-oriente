@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sindicato de Transporte del Oriente</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #eef2f7;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 12px;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(30, 60, 114, 0.15);
+            overflow: hidden;
+            padding-bottom: 30px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4a6fa5 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 5px solid #94a3b8;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #94a3b8, #cbd5e1, #94a3b8);
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+        }
+
+        .header p {
+            font-size: 13px;
+            color: #cbd5e1;
+            margin-top: 4px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .seccion-principal {
+            padding: 20px 16px 5px 16px;
+        }
+
+        .btn-principal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,180,219,0.3);
+            margin-bottom: 12px;
+            transition: transform 0.2s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-whatsapp-general {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(56,239,125,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .grupo-oficinas {
+            padding: 0 16px;
+            margin-top: 22px;
+        }
+
+        .titulo-grupo {
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #475569;
+            letter-spacing: 1.2px;
+            margin-bottom: 12px;
+            font-weight: 800;
+            border-left: 4px solid #1e3c72;
+            padding-left: 8px;
+        }
+
+        .card-oficina {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .card-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .card-nombre {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .card-telefono {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 1px;
+            font-weight: 500;
+        }
+
+        .btn-compartir-individual {
+            background: none;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid #e2e8f0;
+            background-color: #ffffff;
+        }
+
+        .acciones-oficina {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-accion {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            padding: 11px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+
+        .btn-maps {
+            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+            color: #334155;
+            border-color: #cbd5e1;
+        }
+
+        .btn-llamar {
+            background: linear-gradient(135deg, #11998e 0%, #1f8066 100%);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(17,153,142,0.2);
+        }
+
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 440px;
+            height: 75vh;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            animation: modalShow 0.25s cubic-bezier(0.1, 0.8, 0.3, 1);
+            border: 1px solid #94a3b8;
+        }
+
+        @keyframes modalShow {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #94a3b8;
+        }
+
+        .modal-header h3 {
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-cerrar {
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 26px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            flex-grow: 1;
+            width: 100%;
+            height: 100%;
+            background-color: #f1f5f9;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .footer-text {
+            text-align: center;
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 30px;
+            padding: 0 24px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Sindicato del Oriente</h1>
+        <p>Servicio de Transporte Interprovincial</p>
+    </div>
+
+    <div class="seccion-principal">
+        <!-- Compartir Web Completa -->
+        <a href="#" onclick="compartirWeb()" class="btn-principal">
+            🔗 Compartir Tarjeta Digital
+        </a>
+        <!-- Consultas Generales por WhatsApp con mensaje estructurado -->
+        <a href="https://wa.me/59160096197?text=Hola%20Sindicato%20del%20Oriente,%20deseo%20realizar%20una%20consulta%20general%20sobre%20los%20horarios%20y%20salidas." target="_blank" class="btn-whatsapp-general">
+            💬 Consultas Generales: 60096197
+        </a>
+    </div>
+
+    <!-- GRUPO 1: RUTAS E INTERPROVINCIAL -->
+    <div class="grupo-oficinas">
+        <div class="titulo-grupo">Rutas e Interprovincial</div>
+        
+        <!-- Oficina Okinawa -->
+        <div class="card-oficina">
+            <div class="card-header-flex">
+                <div>
+                    <div class="card-nombre">Oficina Okinawa</div>
+                    <div class="card-telefono">Nro: 60096184</div>
+                </div>
+                <button class="btn-compartir-individual" onclick="compartirUbicacion('Oficina Okinawa', '60096184', '-17.2185,-62.8856')">📲 Enviar datos</button>
+            </div>
+            <div class="acciones-oficina">
+                <button onclick="abrirUbicacion('Oficina Okinawa', '-17.219784, -62.894674')" class="btn-accion btn-maps">📍 Ver Mapa</button>
+                <a href="https://wa.me/59160096184?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Okinawa.%20Por%20favor,%20necesito%20información%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">💬 WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- Oficina Warnes -->
+        <div class="card-oficina">
+            <div class="card-header-flex">
+                <div>
+                    <div class="card-nombre">Oficina Warnes</div>
+                    <div class="card-telefono">Nro: 60095645</div>
+                </div>
+                <button class="btn-compartir-individual" onclick="compartirUbicacion('Oficina Warnes', '60095645', '-17.5144,-63.1678')">📲 Enviar datos</button>
+            </div>
+            <div class="acciones-oficina">
+                <button onclick="abrirUbicacion('Oficina Warnes', '-17.5144,-63.1678')" class="btn-accion btn-maps">📍 Ver Mapa</button>
+                <a href="https://wa.me/59160095645?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Warnes.%20Por%20favor,%20necesito%20información%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">💬 WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRUPO 2: PARADAS SANTA CRUZ -->
+    <div class="grupo-oficinas">
+        <div class="titulo-grupo">Paradas en Santa Cruz</div>
+
+        <!-- Terminal Bimodal -->
+        <div class="card-oficina">
+            <div class="card-header-flex">
+                <div>
+                    <div class="card-nombre">Oficina Terminal Bimodal</div>
+                    <div class="card-telefono">Nro: 60095643</div>
+                </div>
+                <button class="btn-compartir-individual" onclick="compartirUbicacion('Oficina Terminal Bimodal', '60095643', '-17.7946,-63.1633')">📲 Enviar datos</button>
+            </div>
+            <div class="acciones-oficina">
+                <button onclick="abrirUbicacion('Oficina Terminal Bimodal', '-17.7946,-63.1633')" class="btn-accion btn-maps">📍 Ver Mapa</button>
+                <a href="https://wa.me/59160095643?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Terminal%20Bimodal.%20Por%20favor,%20necesito%20información%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">💬 WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- Parada La Ramada -->
+        <div class="card-oficina">
+            <div class="card-header-flex">
+                <div>
+                    <div class="card-nombre">Parada La Ramada</div>
+                    <div class="card-telefono">Nro: 60095648</div>
+                </div>
+                <button class="btn-compartir-individual" onclick="compartirUbicacion('Parada La Ramada', '60095648', '-17.7997,-63.1904')">📲 Enviar datos</button>
+            </div>
+            <div class="acciones-oficina">
+                <button onclick="abrirUbicacion('Parada La Ramada', '-17.7997,-63.1904')" class="btn-accion btn-maps">📍 Ver Mapa</button>
+                <a href="https://wa.me/59160095648?text=Hola,%20me%20comunico%20con%20la%20Parada%20La%20Ramada.%20Por%20favor,%20necesito%20información%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">💬 WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- Parada 2do Anillo -->
+        <div class="card-oficina">
+            <div class="card-header-flex">
+                <div>
+                    <div class="card-nombre">Parada 2do Anillo</div>
+                    <div class="card-telefono">Nro: 60095647</div>
+                </div>
+                <button class="btn-compartir-individual" onclick="compartirUbicacion('Parada 2do Anillo', '60095647', '-17.7845,-63.1812')">📲 Enviar datos</button>
+            </div>
+            <div class="acciones-oficina">
+                <button onclick="abrirUbicacion('Parada 2do Anillo', '-17.7845,-63.1812')" class="btn-accion btn-maps">📍 Ver Mapa</button>
+                <a href="https://wa.me/59160095647?text=Hola,%20me%20comunico%20con%20la%20Parada%202do%20Anillo.%20Por%20favor,%20necesito%20información%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">💬 WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <p class="footer-text">Sindicato de Transporte del Oriente · Conectando nuestras regiones los 365 días del año.</p>
+</div>
+
+<!-- VENTANA MODAL EMERGENTE -->
+<div id="mapModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitulo">Ubicación</h3>
+            <button class="btn-cerrar" onclick="cerrarModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <iframe id="mapIframe" src="" allow="geolocation"></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+    function abrirUbicacion(nombreOficina, coordenadas) {
+        const modal = document.getElementById('mapModal');
+        const titulo = document.getElementById('modalTitulo');
+        const iframe = document.getElementById('mapIframe');
+        
+        titulo.innerText = `Ruta a: ${nombreOficina}`;
+        const urlGoogleMaps = `https://maps.google.com/maps?saddr=My+Location&daddr=${coordenadas}&output=embed`;
+        
+        iframe.src = urlGoogleMaps;
+        modal.style.display = 'flex';
+    }
+
+    function cerrarModal() {
+        const modal = document.getElementById('mapModal');
+        const iframe = document.getElementById('mapIframe');
+        modal.style.display = 'none';
+        iframe.src = '';
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('mapModal');
+        if (event.target == modal) {
+            cerrarModal();
+        }
+    }
+
+    function compartirWeb() {
+        const urlActual = window.location.href;
+        const texto = `*Sindicato de Transporte del Oriente*%0A🚖 Tarjeta Digital de Contactos y Ubicaciones interprovinciales.%0A%0AEncuentra todas nuestras oficinas y paradas aquí:%0A${urlActual}`;
+        window.open(`https://api.whatsapp.com/send?text=${texto}`, '_blank');
+    }
+
+    function compartirUbicacion(nombre, numero, coordenadas) {
+        const urlMaps = `https://www.google.com/maps?q=${coordenadas}`;
+        const texto = `*Sindicato de Transporte del Oriente*%0A📍 *${nombre}*%0A📞 Número de contacto: ${numero}%0A%0A🗺�?Ver ubicación en Google Maps:%0A${urlMaps}`;
+        window.open(`https://api.whatsapp.com/send?text=${texto}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
