@@ -16,8 +16,8 @@
         body {
             background-color: #e2e8f0;
             color: #1a2a3a;
-            line-height: 1.5;
-            padding: 20px 10px;
+            line-height: 1.3;
+            padding: 5px;
         }
 
         .container {
@@ -25,40 +25,39 @@
             max-width: 480px;
             margin: 0 auto;
             background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             overflow: hidden;
-            padding-bottom: 30px;
+            padding-bottom: 12px;
             border: 1px solid #cbd5e1;
         }
 
+        /* --- HEADER MÍNIMO --- */
         .header {
             background: linear-gradient(135deg, #0f172a, #1e3c72);
             color: #ffffff;
             text-align: center;
-            padding: 28px 20px;
-            border-bottom: 4px solid #38bdf8;
+            padding: 8px 10px;
+            border-bottom: 2px solid #38bdf8;
         }
 
         .header h1 {
-            font-size: 23px;
+            font-size: 15px;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 1px;
         }
 
         .header p {
-            font-size: 13px;
+            font-size: 10px;
             color: #cbd5e1;
-            font-weight: 400;
         }
 
-        /* --- CARRUSEL DINÁMICO --- */
+        /* --- CARRUSEL COMPACTO --- */
         .carrusel-contenedor {
             position: relative;
             width: 100%;
             background: #0f172a;
-            min-height: 200px;
+            min-height: 120px;
             overflow: hidden;
         }
 
@@ -75,7 +74,7 @@
 
         .slide img {
             width: 100%;
-            height: 200px;
+            height: 120px;
             object-fit: cover;
             display: block;
         }
@@ -85,159 +84,139 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(15, 23, 42, 0.92));
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
             color: #ffffff;
-            padding: 15px 15px 10px 15px;
-            font-size: 13px;
+            padding: 8px 10px 4px 10px;
+            font-size: 11px;
             font-weight: 600;
         }
 
         .carrusel-puntos {
             display: flex;
             justify-content: center;
-            gap: 6px;
+            gap: 4px;
             position: absolute;
-            bottom: 8px;
-            right: 15px;
+            bottom: 4px;
+            right: 10px;
             z-index: 5;
         }
 
         .punto {
-            width: 7px;
-            height: 7px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
             background: rgba(255,255,255,0.4);
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
         .punto.activo {
             background: #ffffff;
-            width: 18px;
-            border-radius: 4px;
+            width: 12px;
+            border-radius: 3px;
         }
 
         .loading-carrusel {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 200px;
+            height: 120px;
             color: #94a3b8;
-            font-size: 13px;
+            font-size: 11px;
         }
 
         /* --- SECCIÓN PRINCIPAL --- */
         .seccion-principal {
-            padding: 20px 15px 10px 15px;
+            padding: 8px 10px 2px 10px;
         }
 
         .btn-principal {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 6px;
             background: #25D366;
             color: white;
             text-decoration: none;
-            padding: 14px;
-            border-radius: 12px;
+            padding: 8px;
+            border-radius: 8px;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 13px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-            margin-bottom: 10px;
-            transition: transform 0.1s ease, background 0.2s;
-        }
-
-        .btn-principal:active {
-            transform: scale(0.98);
+            box-shadow: 0 2px 6px rgba(37, 211, 102, 0.3);
+            margin-bottom: 6px;
         }
 
         .btn-compartir-general {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 5px;
             width: 100%;
             background: #334155;
             color: white;
             text-decoration: none;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 7px;
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 12px;
             border: none;
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            transition: background 0.2s;
-        }
-
-        .btn-compartir-general:hover {
-            background: #1e293b;
         }
 
         .grupo-oficinas {
-            padding: 0 15px;
-            margin-top: 18px;
+            padding: 0 10px;
+            margin-top: 8px;
         }
 
         .titulo-grupo {
-            font-size: 13px;
+            font-size: 11px;
             text-transform: uppercase;
             color: #64748b;
-            letter-spacing: 1.2px;
-            margin-bottom: 12px;
+            letter-spacing: 0.8px;
+            margin-bottom: 4px;
             font-weight: 700;
             border-left: 3px solid #1e3c72;
-            padding-left: 8px;
+            padding-left: 5px;
         }
 
         .card-oficina {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 15px;
-            margin-bottom: 14px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border-radius: 8px;
+            padding: 6px 8px;
+            margin-bottom: 5px;
         }
 
         .card-nombre {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
         }
 
+        /* 3 BOTONES EN UNA SOLA LÍNEA */
         .acciones-oficina {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .acciones-fila {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4px;
         }
 
         .btn-accion {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 3px;
             text-decoration: none;
-            padding: 11px 10px;
-            border-radius: 10px;
-            font-size: 13px;
+            padding: 6px 2px;
+            border-radius: 6px;
+            font-size: 11px;
             font-weight: 600;
             text-align: center;
             border: none;
             cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        .btn-accion:hover {
-            opacity: 0.9;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .btn-maps {
@@ -255,35 +234,31 @@
             background-color: #f1f5f9;
             color: #475569;
             border: 1px solid #cbd5e1;
-            width: 100%;
-            font-size: 13px;
-            padding: 10px;
         }
 
         .icon-wa {
-            width: 18px;
-            height: 18px;
+            width: 12px;
+            height: 12px;
             fill: currentColor;
             flex-shrink: 0;
         }
 
-        /* MAPA GENERAL RESPONSIVO */
+        /* MAPA GENERAL */
         .card-mapa-general {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 14px;
+            border-radius: 8px;
             overflow: hidden;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .mapa-header {
-            padding: 12px 15px;
+            padding: 6px 10px;
             background: #e2e8f0;
             font-weight: bold;
             color: #1e293b;
-            font-size: 13px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .mapa-wrapper {
@@ -313,42 +288,36 @@
             width: 100%; 
             height: 100%; 
             background-color: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(4px);
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 8px;
         }
 
         .modal-content {
             background-color: #ffffff;
             width: 100%;
             max-width: 440px;
-            height: 80vh;
-            border-radius: 18px;
+            height: 85vh;
+            border-radius: 14px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            animation: zoomIn 0.25s ease;
-        }
-
-        @keyframes zoomIn {
-            from { transform: scale(0.92); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .modal-header {
             background: #1e3c72;
             color: white;
-            padding: 15px 18px;
+            padding: 10px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 3px solid #38bdf8;
+            border-bottom: 2px solid #38bdf8;
         }
 
         .modal-header h3 {
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 600;
             max-width: 60%;
             overflow: hidden;
@@ -360,25 +329,20 @@
             background-color: #0284c7;
             color: white;
             text-decoration: none;
-            padding: 7px 12px;
-            border-radius: 8px;
-            font-size: 12px;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 11px;
             font-weight: bold;
-            transition: background 0.2s;
-        }
-
-        .btn-ruta-externa:hover {
-            background-color: #0369a1;
         }
 
         .btn-cerrar {
             background: none;
             border: none;
             color: white;
-            font-size: 26px;
+            font-size: 20px;
             cursor: pointer;
             line-height: 1;
-            margin-left: 10px;
+            margin-left: 6px;
         }
 
         .modal-body {
@@ -395,10 +359,10 @@
 
         .footer-text {
             text-align: center;
-            font-size: 12px;
+            font-size: 10px;
             color: #64748b;
-            margin-top: 22px;
-            padding: 0 20px;
+            margin-top: 10px;
+            padding: 0 10px;
         }
     </style>
 </head>
@@ -407,7 +371,7 @@
 <div class="container">
     <div class="header">
         <h1>Sindicato de Transporte del Oriente</h1>
-        <p>Servicio de Transporte Interprovincial</p>
+        <p>Servicio Interprovincial</p>
     </div>
 
     <!-- CARRUSEL DINÁMICO (GOOGLE SHEETS) -->
@@ -436,14 +400,12 @@
         <div class="card-oficina">
             <div class="card-nombre">Oficina Okinawa</div>
             <div class="acciones-oficina">
-                <div class="acciones-fila">
-                    <button onclick="abrirUbicacion('Oficina Okinawa', '-17.219766, -62.894665')" class="btn-accion btn-maps">&#128205; Mapa</button>
-                    <a href="https://wa.me/59160096184?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Okinawa.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
-                        <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        60096184
-                    </a>
-                </div>
-                <button onclick="compartirOficina('Oficina Okinawa', '60096184', '-17.219766,-62.894665')" class="btn-accion btn-compartir">&#128241; Compartir datos de la parada</button>
+                <button onclick="abrirUbicacion('Oficina Okinawa', '-17.219766, -62.894665')" class="btn-accion btn-maps">&#128205; Mapa</button>
+                <a href="https://wa.me/59160096184?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Okinawa.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
+                    <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    Chat
+                </a>
+                <button onclick="compartirOficina('Oficina Okinawa', '60096184', '-17.219766,-62.894665')" class="btn-accion btn-compartir">&#128241; Compartir</button>
             </div>
         </div>
 
@@ -451,14 +413,12 @@
         <div class="card-oficina">
             <div class="card-nombre">Oficina Warnes</div>
             <div class="acciones-oficina">
-                <div class="acciones-fila">
-                    <button onclick="abrirUbicacion('Oficina Warnes', '-17.51089, -63.16776')" class="btn-accion btn-maps">&#128205; Mapa</button>
-                    <a href="https://wa.me/59160095645?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Warnes.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
-                        <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        60095645
-                    </a>
-                </div>
-                <button onclick="compartirOficina('Oficina Warnes', '60095645', '-17.51089,-63.16776')" class="btn-accion btn-compartir">&#128241; Compartir datos de la parada</button>
+                <button onclick="abrirUbicacion('Oficina Warnes', '-17.51089, -63.16776')" class="btn-accion btn-maps">&#128205; Mapa</button>
+                <a href="https://wa.me/59160095645?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Warnes.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
+                    <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    Chat
+                </a>
+                <button onclick="compartirOficina('Oficina Warnes', '60095645', '-17.51089,-63.16776')" class="btn-accion btn-compartir">&#128241; Compartir</button>
             </div>
         </div>
     </div>
@@ -471,14 +431,12 @@
         <div class="card-oficina">
             <div class="card-nombre">Oficina Terminal Bimodal</div>
             <div class="acciones-oficina">
-                <div class="acciones-fila">
-                    <button onclick="abrirUbicacion('Oficina Terminal Bimodal', '-17.789192, -63.161470')" class="btn-accion btn-maps">&#128205; Mapa</button>
-                    <a href="https://wa.me/59160095643?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Terminal%20Bimodal.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
-                        <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        60095643
-                    </a>
-                </div>
-                <button onclick="compartirOficina('Oficina Terminal Bimodal', '60095643', '-17.789192,-63.161470')" class="btn-accion btn-compartir">&#128241; Compartir datos de la parada</button>
+                <button onclick="abrirUbicacion('Oficina Terminal Bimodal', '-17.789192, -63.161470')" class="btn-accion btn-maps">&#128205; Mapa</button>
+                <a href="https://wa.me/59160095643?text=Hola,%20me%20comunico%20con%20la%20Oficina%20Terminal%20Bimodal.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
+                    <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    Chat
+                </a>
+                <button onclick="compartirOficina('Oficina Terminal Bimodal', '60095643', '-17.789192,-63.161470')" class="btn-accion btn-compartir">&#128241; Compartir</button>
             </div>
         </div>
 
@@ -486,14 +444,12 @@
         <div class="card-oficina">
             <div class="card-nombre">Parada La Ramada</div>
             <div class="acciones-oficina">
-                <div class="acciones-fila">
-                    <button onclick="abrirUbicacion('Parada La Ramada', '-17.79243, -63.18767')" class="btn-accion btn-maps">&#128205; Mapa</button>
-                    <a href="https://wa.me/59160095648?text=Hola,%20me%20comunico%20con%20la%20Parada%20La%20Ramada.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
-                        <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        60095648
-                    </a>
-                </div>
-                <button onclick="compartirOficina('Parada La Ramada', '60095648', '-17.79243,-63.18767')" class="btn-accion btn-compartir">&#128241; Compartir datos de la parada</button>
+                <button onclick="abrirUbicacion('Parada La Ramada', '-17.79243, -63.18767')" class="btn-accion btn-maps">&#128205; Mapa</button>
+                <a href="https://wa.me/59160095648?text=Hola,%20me%20comunico%20con%20la%20Parada%20La%20Ramada.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
+                    <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    Chat
+                </a>
+                <button onclick="compartirOficina('Parada La Ramada', '60095648', '-17.79243,-63.18767')" class="btn-accion btn-compartir">&#128241; Compartir</button>
             </div>
         </div>
 
@@ -501,14 +457,12 @@
         <div class="card-oficina">
             <div class="card-nombre">Parada 2do Anillo</div>
             <div class="acciones-oficina">
-                <div class="acciones-fila">
-                    <button onclick="abrirUbicacion('Parada 2do Anillo', '-17.76845, -63.18218')" class="btn-accion btn-maps">&#128205; Mapa</button>
-                    <a href="https://wa.me/59160095647?text=Hola,%20me%20comunico%20con%20la%20Parada%202do%20Anillo.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
-                        <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        60095647
-                    </a>
-                </div>
-                <button onclick="compartirOficina('Parada 2do Anillo', '60095647', '-17.76845,-63.18218')" class="btn-accion btn-compartir">&#128241; Compartir datos de la parada</button>
+                <button onclick="abrirUbicacion('Parada 2do Anillo', '-17.76845, -63.18218')" class="btn-accion btn-maps">&#128205; Mapa</button>
+                <a href="https://wa.me/59160095647?text=Hola,%20me%20comunico%20con%20la%20Parada%202do%20Anillo.%20Por%20favor,%20necesito%20informaci&oacute;n%20sobre%20salidas%20y%20reserva%20de%20asientos." target="_blank" class="btn-accion btn-llamar">
+                    <svg class="icon-wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    Chat
+                </a>
+                <button onclick="compartirOficina('Parada 2do Anillo', '60095647', '-17.76845,-63.18218')" class="btn-accion btn-compartir">&#128241; Compartir</button>
             </div>
         </div>
 
@@ -521,8 +475,7 @@
         </div>
     </div>
 
-    <p class="footer-text">Sindicato de Transporte del Oriente.</p>
-    <p class="footer-text">Conectando nuestras regiones los 365 d&iacute;as del a&ntilde;o.</p>
+    <p class="footer-text">Sindicato de Transporte del Oriente &bull; 365 d&iacute;as del a&ntilde;o</p>
 </div>
 	
 <!-- VENTANA MODAL INTERACTIVA -->
@@ -540,7 +493,7 @@
 </div>
 
 <script>
-    /* CONEXIÓN A GOOGLE SHEETS PARA EL CARRUSEL DINÁMICO */
+    /* CONEXIÓN A GOOGLE SHEETS */
     const SPREADSHEET_ID = '15Wmk0ufjZv8mQWY80jt6AXSmMX-H2TqxGYVfGuBPmeU'; 
     const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json`;
 
@@ -553,7 +506,6 @@
         const containerSlides = document.getElementById('carruselSlides');
         const containerPuntos = document.getElementById('carruselPuntos');
 
-        // Si el ID está vacío o sin configurar, usar respaldo
         if (!SPREADSHEET_ID || SPREADSHEET_ID.trim() === '' || SPREADSHEET_ID === 'TU_ID_DE_GOOGLE_SHEETS_AQUI') {
             usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
             return;
@@ -562,8 +514,6 @@
         try {
             const response = await fetch(SHEETS_URL);
             const text = await response.text();
-            
-            // Extraer JSON limpio de la respuesta de Google Visualization API
             const jsonText = text.substring(47, text.length - 2);
             const data = JSON.parse(jsonText);
             const rows = data.table.rows;
@@ -686,16 +636,16 @@
         }
     }
 
-    /* --- FUNCIONES DE COMPARTIR POR WHATSAPP --- */
+    /* --- COMPARTIR --- */
     function compartirWeb() {
         const urlActual = window.location.href;
-        const texto = `🚌 *Sindicato de Transporte del Oriente*\nAquí tienes nuestra Tarjeta Digital con todas nuestras ubicaciones de Google Maps y números de WhatsApp oficiales:\n\n🔗 ${urlActual}`;
+        const texto = `\uD83D\uDE8C *Sindicato de Transporte del Oriente*\n Aqu\u00ed tienes nuestra Tarjeta Digital con todas nuestras ubicaciones de Google Maps y n\u00ameros de WhatsApp oficiales:\n\n\uD83D\uDD17 ${urlActual}`;
         window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
     }
 
     function compartirOficina(nombre, telf, coords) {
         const linkMaps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coords)}`;
-        const texto = `📍 *Sindicato de Transporte del Oriente*\n\n*${nombre}*\n📞 WhatsApp de contacto: ${telf}\n🗺️ Ubicación en Google Maps:\n${linkMaps}`;
+        const texto = `\uD83D\uDCCD *Sindicato de Transporte del Oriente*\n\n*${nombre}*\n\uD83D\uDCDE WhatsApp de contacto: ${telf}\n\uD83D\uDDFA\uFE0F Ubicaci\u00f3n en Google Maps:\n${linkMaps}`;
         window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
     }
 </script>
