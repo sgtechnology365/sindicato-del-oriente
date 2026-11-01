@@ -53,7 +53,7 @@
             font-weight: 400;
         }
 
-        /* --- CARRUSEL DINAMICO --- */
+        /* --- CARRUSEL DIN¨¢MICO (GOOGLE SHEETS) --- */
         .carrusel-contenedor {
             position: relative;
             width: 100%;
@@ -117,7 +117,16 @@
             border-radius: 4px;
         }
 
-        /* --- SECCION PRINCIPAL --- */
+        .loading-carrusel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        /* --- SECCI¨®N PRINCIPAL --- */
         .seccion-principal {
             padding: 20px 15px 10px 15px;
         }
@@ -401,22 +410,11 @@
         <p>Servicio de Transporte Interprovincial</p>
     </div>
 
-    <!-- CARRUSEL DE IMAGENES Y AVISOS -->
+    <!-- CARRUSEL DIN¨¢MICO (GOOGLE SHEETS) -->
     <div class="carrusel-contenedor" id="carruselContenedor">
-        <div class="carrusel-slides" id="carruselSlides">
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="Flota de buses">
-                <div class="slide-caption">&#128227; Salidas continuas todos los d&iacute;as del a&ntilde;o</div>
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80" alt="Terminal de buses">
-                <div class="slide-caption">&#127970; Atenci&oacute;n personalizada en todas nuestras paradas</div>
-            </div>
-        </div>
-        <div class="carrusel-puntos" id="carruselPuntos">
-            <span class="punto activo" onclick="irASlide(0)"></span>
-            <span class="punto" onclick="irASlide(1)"></span>
-        </div>
+        <div class="loading-carrusel" id="loadingCarrusel">Cargando anuncios...</div>
+        <div class="carrusel-slides" id="carruselSlides"></div>
+        <div class="carrusel-puntos" id="carruselPuntos"></div>
     </div>
 
     <div class="seccion-principal">
@@ -542,11 +540,92 @@
 </div>
 
 <script>
-    /* L&Oacute;GICA DEL CARRUSEL */
+    /* CONEXI&Oacute;N A GOOGLE SHEETS PARA EL CARRUSEL DIN&Aacute;MICO */
+    // REEMPLAZA 'TU_ID_DE_GOOGLE_SHEETS_AQUI' POR EL ID REAL DE TU HOJA:
+    const SPREADSHEET_ID = '15Wmk0ufjZv8mQWY80jt6AXSmMX-H2TqxGYVfGuBPmeU'; 
+    const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json`;
+
     let indexActual = 0;
-    const totalSlides = 2;
-    
+    let totalSlides = 0;
+    let intervaloCarrusel = null;
+
+    async function cargarSlidesDesdeSheets() {
+        const loading = document.getElementById('loadingCarrusel');
+        const containerSlides = document.getElementById('carruselSlides');
+        const containerPuntos = document.getElementById('carruselPuntos');
+
+        if (SPREADSHEET_ID === '15Wmk0ufjZv8mQWY80jt6AXSmMX-H2TqxGYVfGuBPmeU') {
+            usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
+            return;
+        }
+
+        try {
+            const response = await fetch(SHEETS_URL);
+            const text = await response.text();
+            const jsonText = text.substring(47, text.length - 2);
+            const data = JSON.parse(jsonText);
+            const rows = data.table.rows;
+
+            if (!rows || rows.length === 0) {
+                usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
+                return;
+            }
+
+            let slidesHTML = '';
+            let puntosHTML = '';
+            let contadorValid = 0;
+
+            rows.forEach((row) => {
+                const imgUrl = row.c && row.c[0] ? row.c[0].v : '';
+                const caption = row.c && row.c[1] ? row.c[1].v : '';
+
+                if (imgUrl) {
+                    slidesHTML += `
+                        <div class="slide">
+                            <img src="${imgUrl}" alt="Aviso Sindicato">
+                            ${caption ? `<div class="slide-caption">${caption}</div>` : ''}
+                        </div>`;
+                    puntosHTML += `<span class="punto ${contadorValid === 0 ? 'activo' : ''}" onclick="irASlide(${contadorValid})"></span>`;
+                    contadorValid++;
+                }
+            });
+
+            if (contadorValid > 0) {
+                loading.style.display = 'none';
+                containerSlides.innerHTML = slidesHTML;
+                containerPuntos.innerHTML = puntosHTML;
+                totalSlides = contadorValid;
+                intervaloCarrusel = setInterval(moverCarrusel, 4000);
+            } else {
+                usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
+            }
+
+        } catch (error) {
+            console.error('Error cargando Google Sheets, usando respaldo:', error);
+            usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
+        }
+    }
+
+    function usarRespaldoPorDefecto(loading, containerSlides, containerPuntos) {
+        loading.style.display = 'none';
+        containerSlides.innerHTML = `
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="Flota de buses">
+                <div class="slide-caption">&#128227; Salidas continuas todos los d&iacute;as del a&ntilde;o</div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80" alt="Terminal de buses">
+                <div class="slide-caption">&#127970; Atenci&oacute;n personalizada en todas nuestras paradas</div>
+            </div>`;
+        containerPuntos.innerHTML = `
+            <span class="punto activo" onclick="irASlide(0)"></span>
+            <span class="punto" onclick="irASlide(1)"></span>`;
+        totalSlides = 2;
+        intervaloCarrusel = setInterval(moverCarrusel, 4000);
+    }
+
     function moverCarrusel() {
+        if (totalSlides <= 1) return;
         indexActual = (indexActual + 1) % totalSlides;
         actualizarCarrusel();
     }
@@ -567,14 +646,15 @@
         });
     }
 
-    let intervaloCarrusel = setInterval(moverCarrusel, 4000);
-
     function reiniciarIntervalo() {
+        if (totalSlides <= 1) return;
         clearInterval(intervaloCarrusel);
         intervaloCarrusel = setInterval(moverCarrusel, 4000);
     }
 
-    /* MODAL Y FUNCIONES DE COMPARTIR */
+    window.addEventListener('DOMContentLoaded', cargarSlidesDesdeSheets);
+
+    /* --- L&Oacute;GICA DEL MODAL DEL MAPA --- */
     function abrirUbicacion(nombreOficina, coordenadas) {
         const modal = document.getElementById('mapModal');
         const titulo = document.getElementById('modalTitulo');
@@ -602,6 +682,7 @@
         }
     }
 
+    /* --- FUNCIONES DE COMPARTIR POR WHATSAPP --- */
     function compartirWeb() {
         const urlActual = window.location.href;
         const texto = `\uD83D\uDE8C *Sindicato de Transporte del Oriente*\n Aqu\u00ed tienes nuestra Tarjeta Digital con todas nuestras ubicaciones de Google Maps y n\u00ameros de WhatsApp oficiales:\n\n\uD83D\uDD17 ${urlActual}`;
