@@ -53,7 +53,7 @@
             font-weight: 400;
         }
 
-        /* --- CARRUSEL DIN��MICO (GOOGLE SHEETS) --- */
+        /* --- CARRUSEL DINÁMICO --- */
         .carrusel-contenedor {
             position: relative;
             width: 100%;
@@ -126,7 +126,7 @@
             font-size: 13px;
         }
 
-        /* --- SECCI��N PRINCIPAL --- */
+        /* --- SECCIÓN PRINCIPAL --- */
         .seccion-principal {
             padding: 20px 15px 10px 15px;
         }
@@ -410,7 +410,7 @@
         <p>Servicio de Transporte Interprovincial</p>
     </div>
 
-    <!-- CARRUSEL DIN��MICO (GOOGLE SHEETS) -->
+    <!-- CARRUSEL DINÁMICO (GOOGLE SHEETS) -->
     <div class="carrusel-contenedor" id="carruselContenedor">
         <div class="loading-carrusel" id="loadingCarrusel">Cargando anuncios...</div>
         <div class="carrusel-slides" id="carruselSlides"></div>
@@ -512,7 +512,7 @@
             </div>
         </div>
 
-        <!-- MAPA GENERAL INTERACTIVO ENCAJADO Y RESPONSIVO -->
+        <!-- MAPA GENERAL INTERACTIVO -->
         <div class="card-mapa-general">
             <div class="mapa-header">&#128506; Mapa General de Paradas</div>
             <div class="mapa-wrapper">
@@ -540,8 +540,7 @@
 </div>
 
 <script>
-    /* CONEXI&Oacute;N A GOOGLE SHEETS PARA EL CARRUSEL DIN&Aacute;MICO */
-    // REEMPLAZA 'TU_ID_DE_GOOGLE_SHEETS_AQUI' POR EL ID REAL DE TU HOJA:
+    /* CONEXIÓN A GOOGLE SHEETS PARA EL CARRUSEL DINÁMICO */
     const SPREADSHEET_ID = '15Wmk0ufjZv8mQWY80jt6AXSmMX-H2TqxGYVfGuBPmeU'; 
     const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json`;
 
@@ -554,7 +553,8 @@
         const containerSlides = document.getElementById('carruselSlides');
         const containerPuntos = document.getElementById('carruselPuntos');
 
-        if (SPREADSHEET_ID === '15Wmk0ufjZv8mQWY80jt6AXSmMX-H2TqxGYVfGuBPmeU') {
+        // Si el ID está vacío o sin configurar, usar respaldo
+        if (!SPREADSHEET_ID || SPREADSHEET_ID.trim() === '' || SPREADSHEET_ID === 'TU_ID_DE_GOOGLE_SHEETS_AQUI') {
             usarRespaldoPorDefecto(loading, containerSlides, containerPuntos);
             return;
         }
@@ -562,6 +562,8 @@
         try {
             const response = await fetch(SHEETS_URL);
             const text = await response.text();
+            
+            // Extraer JSON limpio de la respuesta de Google Visualization API
             const jsonText = text.substring(47, text.length - 2);
             const data = JSON.parse(jsonText);
             const rows = data.table.rows;
@@ -576,8 +578,8 @@
             let contadorValid = 0;
 
             rows.forEach((row) => {
-                const imgUrl = row.c && row.c[0] ? row.c[0].v : '';
-                const caption = row.c && row.c[1] ? row.c[1].v : '';
+                const imgUrl = row.c && row.c[0] && row.c[0].v ? row.c[0].v : '';
+                const caption = row.c && row.c[1] && row.c[1].v ? row.c[1].v : '';
 
                 if (imgUrl) {
                     slidesHTML += `
@@ -607,7 +609,7 @@
     }
 
     function usarRespaldoPorDefecto(loading, containerSlides, containerPuntos) {
-        loading.style.display = 'none';
+        if(loading) loading.style.display = 'none';
         containerSlides.innerHTML = `
             <div class="slide">
                 <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="Flota de buses">
@@ -621,7 +623,9 @@
             <span class="punto activo" onclick="irASlide(0)"></span>
             <span class="punto" onclick="irASlide(1)"></span>`;
         totalSlides = 2;
-        intervaloCarrusel = setInterval(moverCarrusel, 4000);
+        if (!intervaloCarrusel) {
+            intervaloCarrusel = setInterval(moverCarrusel, 4000);
+        }
     }
 
     function moverCarrusel() {
@@ -654,7 +658,7 @@
 
     window.addEventListener('DOMContentLoaded', cargarSlidesDesdeSheets);
 
-    /* --- L&Oacute;GICA DEL MODAL DEL MAPA --- */
+    /* --- LÓGICA DEL MODAL DEL MAPA --- */
     function abrirUbicacion(nombreOficina, coordenadas) {
         const modal = document.getElementById('mapModal');
         const titulo = document.getElementById('modalTitulo');
@@ -662,8 +666,8 @@
         const btnRuta = document.getElementById('btnRuta');
         
         titulo.innerText = nombreOficina;
-        iframe.src = `https://maps.google.com/maps?q=${coordenadas}&t=&z=16&ie=UTF-8&iwloc=&output=embed`;
-        btnRuta.href = `https://www.google.com/maps/dir/?api=1&destination=${coordenadas}`;
+        iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(coordenadas)}&t=&z=16&ie=UTF-8&iwloc=&output=embed`;
+        btnRuta.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(coordenadas)}`;
         
         modal.style.display = 'flex';
     }
@@ -671,8 +675,8 @@
     function cerrarModal() {
         const modal = document.getElementById('mapModal');
         const iframe = document.getElementById('mapIframe');
-        modal.style.display = 'none';
-        iframe.src = ''; 
+        if(modal) modal.style.display = 'none';
+        if(iframe) iframe.src = ''; 
     }
 
     window.onclick = function(event) {
@@ -685,13 +689,13 @@
     /* --- FUNCIONES DE COMPARTIR POR WHATSAPP --- */
     function compartirWeb() {
         const urlActual = window.location.href;
-        const texto = `\uD83D\uDE8C *Sindicato de Transporte del Oriente*\n Aqu\u00ed tienes nuestra Tarjeta Digital con todas nuestras ubicaciones de Google Maps y n\u00ameros de WhatsApp oficiales:\n\n\uD83D\uDD17 ${urlActual}`;
+        const texto = `🚌 *Sindicato de Transporte del Oriente*\nAquí tienes nuestra Tarjeta Digital con todas nuestras ubicaciones de Google Maps y números de WhatsApp oficiales:\n\n🔗 ${urlActual}`;
         window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
     }
 
     function compartirOficina(nombre, telf, coords) {
-        const linkMaps = `https://www.google.com/maps/search/?api=1&query=${coords}`;
-        const texto = `\uD83D\uDCCD *Sindicato de Transporte del Oriente*\n\n*${nombre}*\n\uD83D\uDCDE WhatsApp de contacto: ${telf}\n\uD83D\uDDFA\uFE0F Ubicaci\u00f3n en Google Maps:\n${linkMaps}`;
+        const linkMaps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coords)}`;
+        const texto = `📍 *Sindicato de Transporte del Oriente*\n\n*${nombre}*\n📞 WhatsApp de contacto: ${telf}\n🗺️ Ubicación en Google Maps:\n${linkMaps}`;
         window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
     }
 </script>
