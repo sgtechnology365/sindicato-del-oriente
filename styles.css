@@ -144,26 +144,34 @@ body {
     margin-bottom: 8px;
 }
 
+/* --- BOTÓN COMPARTIR GENERAL (DEBAJO DEL CARRUSEL) --- */
 .btn-compartir-general {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 8px;
     width: 100%;
-    background: #334155;
-    color: white;
+    background: linear-gradient(135deg, #1e3c72, #0284c7); /* Degradado metálico profundo */
+    color: #ffffff;
     text-decoration: none;
-    padding: 9px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 13px;
+    padding: 12px;
+    border-radius: 12px; /* Esquinas más suaves y modernas */
+    font-weight: 700;
+    font-size: 14px; /* Más grande y legible */
     border: none;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+.btn-compartir-general:active {
+    transform: scale(0.98);
+    background: linear-gradient(135deg, #0f172a, #1e3c72);
 }
 
+/* --- SECCIÓN DE OFICINAS / AGENCIAS --- */
 .grupo-oficinas {
     padding: 0 12px;
-    margin-top: 12px;
+    margin-top: 16px;
 }
 
 .titulo-grupo {
@@ -179,60 +187,72 @@ body {
 
 .card-oficina {
     background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    border: 1px solid #cbd5e1;
+    border-radius: 12px; /* Unificado con el resto del diseño */
+    padding: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
 }
 
 .card-nombre {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     color: #0f172a;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
+/* --- ACCIONES Y BOTONES DE LAS OFICINAS --- */
 .acciones-oficina {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 5px;
+    gap: 8px; /* Más espacio entre botones para evitar toques falsos */
 }
 
 .btn-accion {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 6px;
     text-decoration: none;
-    padding: 8px 4px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 600;
+    padding: 10px 4px; /* Mayor área táctil vertical */
+    border-radius: 10px; /* Bordes redondeados espectaculares */
+    font-size: 13px; /* ¡TEXTO MÁS GRANDE! */
+    font-weight: 700; /* ¡TEXTO EN NEGRILLA! */
     text-align: center;
     border: none;
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: transform 0.1s ease, filter 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+.btn-accion:active {
+    transform: scale(0.95); /* Efecto de hundimiento profesional al pulsar */
+    filter: brightness(0.9);
+}
+
+/* Botón Ver Mapa: Azul Cian Eléctrico */
 .btn-maps {
-    background-color: #e2e8f0;
-    color: #334155;
-    border: 1px solid #cbd5e1;
+    background-color: #0284c7;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
 }
 
+/* Botón Llamar/WhatsApp: Verde Tradicional Vibrante */
 .btn-llamar {
     background-color: #25D366;
     color: #ffffff;
+    box-shadow: 0 2px 6px rgba(37, 211, 102, 0.2);
 }
 
+
+/* Botón Compartir Agencia: Oro / Ámbar Cobrizo Metálico */
 .btn-compartir {
-    background-color: #f1f5f9;
-    color: #475569;
-    border: 1px solid #cbd5e1;
-    font-size: 10.5px;
+    background-color: #d97706; /* Tono ámbar/oro de alta visibilidad */
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(217, 119, 6, 0.2);
 }
 
 .icon-wa {
