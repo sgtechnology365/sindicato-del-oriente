@@ -332,9 +332,11 @@ body {
     color: white;
     text-decoration: none;
     padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 11px;
+    border-radius: 8px;      /* Bordes ligeramente más redondeados */
     font-weight: bold;
+     /* CAMBIOS APLICADOS: */
+    padding: 8px 14px;       /* Aumentado el espacio interno (arriba/abajo e izquierda/derecha) */
+    font-size: 13px;         /* Aumentado el tamaño del texto de 11px a 13px */
 }
 
 .btn-cerrar {
